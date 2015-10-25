@@ -1,4 +1,4 @@
-package com.ab.irh.controller;
+package com.ab.irh.web.controller;
 
 import java.util.List;
 
@@ -8,11 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ab.irh.model.Author;
 import com.ab.irh.model.Publication;
 import com.ab.irh.repository.AuthorRepository;
 import com.ab.irh.repository.PublicationRepository;
+import com.ab.irh.web.form.PublicationForm;
 
 @Controller
 public class PublicationController {
@@ -26,22 +29,25 @@ public class PublicationController {
 	@RequestMapping(value = "/publication", method = RequestMethod.GET)
 	public String publicationForm(Model model) {
 
-		model.addAttribute("publication", new Publication());
+		model.addAttribute("publicationForm", new PublicationForm());
 		model.addAttribute("authors", authorRepository.findAll());
 		return "publication";
 	}
 
 	@RequestMapping(value = "/publication", method = RequestMethod.POST)
-	public String addPublication(@ModelAttribute Publication publication, Model model) {
+	public String addPublication(@ModelAttribute PublicationForm publicationForm, @RequestParam MultipartFile[] files,
+			Model model) {
 
-		if (publication.getAuthorIds() != null && publication.getAuthorIds().length > 0) {
+		Publication publication = new Publication(publicationForm);
+		if (publicationForm.getAuthorIds() != null && publicationForm.getAuthorIds().length > 0) {
 
-			for (Long authorId : publication.getAuthorIds()) {
+			for (Long authorId : publicationForm.getAuthorIds()) {
 				publication.addAuthor(authorRepository.findOne(authorId));
 			}
-		} else if (publication.getAuthorNames() != null) {
+		}
+		if (publicationForm.getAuthorNames() != null) {
 
-			String[] authorNames = publication.getAuthorNames().split(",");
+			String[] authorNames = publicationForm.getAuthorNames().split(",");
 			if (authorNames != null && authorNames.length > 0) {
 
 				for (String authorName : authorNames) {

@@ -14,7 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import com.ab.irh.web.form.PublicationForm;
 
 @Entity
 @Table(name = "publication")
@@ -34,12 +35,16 @@ public class Publication {
 	@JoinTable(name = "publication_author", joinColumns = {
 			@JoinColumn(name = "publication_id") }, inverseJoinColumns = { @JoinColumn(name = "author_id") })
 	private List<Author> authors;
+	
+	public Publication() {
+	}
 
-	@Transient
-	private Long[] authorIds;
+	public Publication(PublicationForm publicationForm) {
 
-	@Transient
-	private String authorNames;
+		this.id = publicationForm.getId();
+		this.title = publicationForm.getTitle();
+		this.year = publicationForm.getYear();
+	}
 
 	public Long getId() {
 		return id;
@@ -71,22 +76,6 @@ public class Publication {
 
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
-	}
-
-	public Long[] getAuthorIds() {
-		return authorIds;
-	}
-
-	public void setAuthorIds(Long[] authorIds) {
-		this.authorIds = authorIds;
-	}
-
-	public String getAuthorNames() {
-		return authorNames;
-	}
-
-	public void setAuthorNames(String authorNames) {
-		this.authorNames = authorNames;
 	}
 
 	public void addAuthor(Author author) {

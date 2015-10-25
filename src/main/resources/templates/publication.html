@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<h1>Form</h1>
-		<form action="#" th:action="@{/publication}" th:object="${publication}" method="post">
+		<form action="#" th:action="@{/publication}" th:object="${publicationForm}" method="post" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td>Title</td>
@@ -15,6 +15,13 @@
 				<tr>
 					<td>Year</td>
 					<td><input type="text" th:field="*{year}" /></td>
+				</tr>
+				<tr>
+					<td>Image</td>
+					<td>
+						<input type="file" name="files" /><br />
+						<input type="file" name="files" />
+					</td>
 				</tr>
 				<tr th:each="author: ${authors}">
 					<td><input type="checkbox" th:field="*{authorIds}" th:value="${author.id}" />&nbsp;<label th:for="${author.id}" th:text="${author.name}">Author Name</label></td>
