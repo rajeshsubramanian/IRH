@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <title>IRH - Publications</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+		<h1>Publications</h1>
+		<table>
+			<tr th:each="publication: ${publications}">
+				<td th:text="${publication.title}">Title</td>
+				<td th:each="author: ${publication.authors}" th:text="${author.name}">Author</td>
+			</tr>
+		</table>
+	</body>
+</html>
