@@ -1,16 +1,158 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-	    <title>IRH - Publications</title>
-	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	</head>
-	<body>
-		<h1>Publications</h1>
-		<table>
-			<tr th:each="publication: ${publications}">
-				<td th:text="${publication.title}">Title</td>
-				<td th:each="author: ${publication.authors}" th:text="${author.name}">Author</td>
-			</tr>
-		</table>
-	</body>
+
+<!--  Version: Multiflex-4.2 / Layout-2                     -->
+<!--  Date:    January 20, 2008                             -->
+<!--  Design:  www.1234.info                                -->
+<!--  License: Fully open source without restrictions.      -->
+<!--           Please keep footer credits with the words    -->
+<!--           "Design by 1234.info" Thank you!             -->
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="3600" />
+	<meta name="revisit-after" content="2 days" />
+	<meta name="robots" content="index,follow" />
+	<meta name="publisher" content="Your publisher infos here ..." />
+	<meta name="copyright" content="Your copyright infos here ..." />
+	<meta name="author" content="Design: 1234.info / Modified: Your Name" />
+	<meta name="distribution" content="global" />
+	<meta name="description" content="Your page description here ..." />
+	<meta name="keywords" content="Your keywords, keywords, keywords, here ..." />
+	<link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/mf42_layout2_setup.css" />
+	<link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/mf42_layout2_text.css" />
+	<link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
+	<title>IRH - View Publications</title>
+</head>
+
+<!-- Global IE fix to avoid layout crash when single word size wider than column width -->
+<!--[if IE]><style type="text/css"> body {word-wrap: break-word;}</style><![endif]-->
+
+<body>
+	<!-- Main Page Container -->
+	<div class="page-container">
+
+	<!--  START COPY here -->
+
+	<!-- A. HEADER -->      
+	<div class="header">
+      
+		<!-- A.1 HEADER TOP -->
+		<div class="header-top">
+			<div class="round-border-topleft"></div><div class="round-border-topright"></div>      
+        
+			<!-- Sitelogo and sitename -->
+			<a class="sitelogo" href="#" title="Home"></a>
+			<div class="sitename">
+				<h1><a href="index.html" title="Go to Start page">MULTIFLEX&nbsp;&bull;&nbsp;4.2</a></h1> 
+				<h2>Open Source Designs</h2>
+			</div>
+    
+			<!-- Navigation Level 0 -->
+			<div class="nav0">
+			</div>			
+
+			<!-- Navigation Level 1 -->
+			<div class="nav1">
+			</div>              
+		</div>
+            
+		<!-- A.3 HEADER BOTTOM -->
+		<div class="header-bottom">
+
+			<!-- Navigation Level 2 (Drop-down menus) -->
+			<div class="nav2">
+	
+				<!-- Navigation item -->
+				<ul>
+					<li><a href="index.html">Home</a></li>
+				</ul>
+	          
+				<!-- Navigation item -->
+				<ul>
+				</ul>                    
+			</div>
+		</div>
+
+		<!-- A.4 HEADER BREADCRUMBS -->
+
+		<!-- Breadcrumbs -->
+		<div class="header-breadcrumbs">
+			<ul>
+				<li><a href="#">Home</a></li>
+			</ul>
+
+			<!-- Search form -->                  
+			<div class="searchform">
+				<form action="index.html" method="get">
+					<fieldset>
+						<input name="field" class="field"  value=" Search..." />
+						<input type="submit" name="button" class="button" value="GO!" />
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!--  END COPY here -->
+
+	<!-- B. MAIN -->
+	<div class="main">
+ 
+		<!-- B.1 MAIN NAVIGATION -->
+		<div class="main-navigation">
+
+			<!-- Navigation Level 3 -->
+			<div class="round-border-topright"></div>
+			<h1 class="first">Title</h1>
+		
+			<!-- Navigation with grid style -->
+			<dl class="nav3-grid">
+				<dt><a href="#">Navlink 11</a></dt>
+				<dt><a href="#">Navlink 12</a></dt>
+				<dd><a href="#">Navlink 121</a></dd>
+				<dd><a href="#">Navlink 122</a></dd>
+				<dd><a href="#">Navlink 123</a></dd>
+				<dt><a href="#">Navlink 13</a></dt>
+				<dt><a href="#">Navlink 14</a></dt>
+				<dt><a href="#">Navlink 15</a></dt>
+			</dl>
+		</div>
+ 
+		<!-- B.1 MAIN CONTENT -->
+		<div class="main-content">
+
+			<!-- Pagetitle -->
+			<h1 class="pagetitle">Publications</h1>
+
+			<!-- Content unit - One column -->
+			<div class="column1-unit">
+				<table>
+					<tr>
+						<th class="top" scope="col">Title</th>
+						<th class="top" scope="col">Year</th>
+						<th class="top" scope="col">Authors</th>
+					</tr>
+					<tr th:each="publication: ${publications}">
+						<td th:text="${publication.title}">Title</td>
+						<td th:text="${publication.year}">Year</td>
+						<td>
+							<div th:each="author: ${publication.authors}" th:utext="${author.name}">Author</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+      
+    <!-- C. FOOTER AREA -->      
+
+    <div class="footer">
+      <p>Copyright &copy; 2008 Your Company | All Rights Reserved</p>
+      <p class="credits">Design by <a href="http://1234.info/" title="Designer Homepage">1234.info</a> | Modified by <a href="#" title="Modifyer Homepage">Your Name</a> | Powered by <a href="#" title="CMS Homepage">Your CMS</a> | <a href="http://validator.w3.org/check?uri=referer" title="Validate XHTML code">XHTML 1.0</a> | <a href="http://jigsaw.w3.org/css-validator/" title="Validate CSS code">CSS 2.0</a></p>
+    </div>      
+  </div> 
+  
+</body>
 </html>
