@@ -20,10 +20,10 @@
 	<meta name="distribution" content="global" />
 	<meta name="description" content="Your page description here ..." />
 	<meta name="keywords" content="Your keywords, keywords, keywords, here ..." />
-	<link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/mf42_layout2_setup.css" />
-	<link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/mf42_layout2_text.css" />
-	<link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
-	<title>IRH - Add Publication</title>
+	<link rel="stylesheet" type="text/css" media="screen,projection,print" href="/css/mf42_layout2_setup.css" />
+	<link rel="stylesheet" type="text/css" media="screen,projection,print" href="/css/mf42_layout2_text.css" />
+	<link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+	<title>IRH - Publication Details</title>
 </head>
 
 <!-- Global IE fix to avoid layout crash when single word size wider than column width -->
@@ -115,59 +115,27 @@
 		<div class="main-content">
 
 			<!-- Pagetitle -->
-			<h1 class="pagetitle">Add a Publication</h1>
+			<h1 class="pagetitle">Publication Details</h1>
 
 			<!-- Content unit - One column -->
 			<div class="column1-unit">
-				<div class="contactform">
-					<form action="#" th:action="@{/add_publication}" th:object="${publicationForm}" method="post" enctype="multipart/form-data">
-						<fieldset><legend>&nbsp;NEW PUBLICATION&nbsp;</legend>
-							<p><label for="title" class="left">Title:</label>
-								<input type="text" th:field="*{title}" class="field" /></p>
-							<p><label for="year" class="left">Year:</label>
-								<input type="text" th:field="*{year}" class="field" /></p>
-							<p><label for="researchFocus" class="left">Research Focus:</label>
-								<textarea th:field="*{researchFocus}" class="field"></textarea></p>
-							
-							<p><label for="researchFocus" class="left">Research Focus:</label>
-								<textarea th:field="*{researchFocus}" class="field"></textarea></p>
-							<p><label for="theoryDescription" class="left">Theory Description:</label>
-								<textarea th:field="*{theoryDescription}" class="field"></textarea></p>
-							<p><label for="gapsInLiterature" class="left">Gaps In Literature:</label>
-								<textarea th:field="*{gapsInLiterature}" class="field"></textarea></p>
-							<p><label for="measures" class="left">Measures:</label>
-								<textarea th:field="*{measures}" class="field"></textarea></p>
-							<p><label for="findings" class="left">Findings:</label>
-								<textarea th:field="*{findings}" class="field"></textarea></p>
-							<p><label for="neuralAreasImplicated" class="left">Neural areas implicated:</label>
-								<textarea th:field="*{neuralAreasImplicated}" class="field"></textarea></p>
-							<p><label for="limitations" class="left">Limitations:</label>
-								<textarea th:field="*{limitations}" class="field"></textarea></p>
-							<p><label for="queries" class="left">Queries:</label>
-								<textarea th:field="*{queries}" class="field"></textarea></p>
-							<p><label for="thinkingStrategies" class="left">Thinking Strategies:</label>
-								<textarea th:field="*{thinkingStrategies}" class="field"></textarea></p>
-							<p><label for="ideaConnectome" class="left">Idea Connectome:</label>
-								<textarea th:field="*{ideaConnectome}" class="field"></textarea></p>
-							<p><label for="quizzlet" class="left">Quizzlet:</label>
-								<textarea th:field="*{quizzlet}" class="field"></textarea></p>
-							<p><label for="answers" class="left">Answers:</label>
-								<textarea th:field="*{answers}" class="field"></textarea></p>
-							<p><label for="file" class="left">Image:</label>
-								<input type="file" name="files" /></p>
-							<p><label for="authorIds" class="left">Authors:</label>
-								<select th:field="*{authorIds}" multiple="multiple" class="combo">
-									<option th:each="author : ${authors}" 
-										th:value="${author.id}" 
-										th:text="${author.name}">Author Name</option>
-								</select>
-							</p>
-							<p><label for="authorNames" class="left">Add new authors</label>
-								<input type="text" th:field="*{authorNames}" /></p>
-							<p><input type="submit" name="submit" id="submit" class="button" value="Save" tabindex="6" /></p>
-						</fieldset>
-					</form>
-				</div>              
+				<p th:text="${publication.title}"></p>
+				<p th:text="${publication.year}"></p>
+				<p th:text="${publication.researchFocus}"></p>
+				<p th:text="${publication.theoryDescription}"></p>
+				<p th:text="${publication.gapsInLiterature}"></p>
+				<p th:text="${publication.measures}"></p>
+				<p th:text="${publication.findings}"></p>
+				<p th:text="${publication.neuralAreasImplicated}"></p>
+				<p th:text="${publication.limitations}"></p>
+				<p th:text="${publication.queries}"></p>
+				<p th:text="${publication.thinkingStrategies}"></p>
+				<p th:text="${publication.ideaConnectome}"></p>
+				<p th:text="${publication.quizzlet}"></p>
+				<p th:text="${publication.answers}"></p>
+				<p th:each="author: ${publication.authors}">
+					<span th:text="${author.name}">Author Name</span><br />
+				</p>
 			</div>
 		</div>
 	</div>

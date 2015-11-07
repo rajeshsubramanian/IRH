@@ -80,6 +80,18 @@ public class Publication {
 		this.id = publicationForm.getId();
 		this.title = publicationForm.getTitle();
 		this.year = publicationForm.getYear();
+		this.researchFocus = publicationForm.getResearchFocus();
+		this.theoryDescription = publicationForm.getTheoryDescription();
+		this.gapsInLiterature = publicationForm.getGapsInLiterature();
+		this.measures = publicationForm.getMeasures();
+		this.findings = publicationForm.getFindings();
+		this.neuralAreasImplicated = publicationForm.getNeuralAreasImplicated();
+		this.limitations = publicationForm.getLimitations();
+		this.queries = publicationForm.getQueries();
+		this.thinkingStrategies = publicationForm.getThinkingStrategies();
+		this.ideaConnectome = publicationForm.getIdeaConnectome();
+		this.quizzlet = publicationForm.getQuizzlet();
+		this.answers = publicationForm.getAnswers();
 	}
 
 	public Long getId() {

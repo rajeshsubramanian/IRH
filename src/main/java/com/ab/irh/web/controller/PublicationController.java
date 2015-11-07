@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ab.irh.exception.ResourceNotFoundException;
 import com.ab.irh.model.Author;
 import com.ab.irh.model.Publication;
 import com.ab.irh.repository.AuthorRepository;
@@ -33,6 +34,17 @@ public class PublicationController {
 		model.addAttribute("publicationForm", new PublicationForm());
 		model.addAttribute("authors", authorRepository.findAll());
 		return "add_publication";
+	}
+
+	@RequestMapping(value = "/publication/{id}", method = RequestMethod.GET)
+	public String getPublication(@PathVariable(value = "id") Publication publication, Model model)
+			throws ResourceNotFoundException {
+
+		if (publication == null) {
+			throw new ResourceNotFoundException();
+		}
+		model.addAttribute(publication);
+		return "publication_details";
 	}
 
 	@RequestMapping(value = "/add_publication", method = RequestMethod.POST)
