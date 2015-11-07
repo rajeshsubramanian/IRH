@@ -79,9 +79,6 @@
 
 		<!-- Breadcrumbs -->
 		<div class="header-breadcrumbs">
-			<ul>
-				<li><a href="#">Home</a></li>
-			</ul>
 
 			<!-- Search form -->                  
 			<div class="searchform">
@@ -105,18 +102,12 @@
 
 			<!-- Navigation Level 3 -->
 			<div class="round-border-topright"></div>
-			<h1 class="first">Title</h1>
+			<h1 class="first">Publications</h1>
 		
 			<!-- Navigation with grid style -->
 			<dl class="nav3-grid">
-				<dt><a href="#">Navlink 11</a></dt>
-				<dt><a href="#">Navlink 12</a></dt>
-				<dd><a href="#">Navlink 121</a></dd>
-				<dd><a href="#">Navlink 122</a></dd>
-				<dd><a href="#">Navlink 123</a></dd>
-				<dt><a href="#">Navlink 13</a></dt>
-				<dt><a href="#">Navlink 14</a></dt>
-				<dt><a href="#">Navlink 15</a></dt>
+				<dt><a href="/publication">Add publication</a></dt>
+				<dt><a href="/publications">List all publications</a></dt>
 			</dl>
 		</div>
  
@@ -135,9 +126,42 @@
 								<input type="text" th:field="*{title}" class="field" /></p>
 							<p><label for="year" class="left">Year:</label>
 								<input type="text" th:field="*{year}" class="field" /></p>
+							<p><label for="researchFocus" class="left">Research Focus:</label>
+								<textarea th:field="*{researchFocus}" class="field"></textarea></p>
+							
+							<p><label for="researchFocus" class="left">Research Focus:</label>
+								<textarea th:field="*{researchFocus}" class="field"></textarea></p>
+							<p><label for="theoryDescription" class="left">Theory Description:</label>
+								<textarea th:field="*{theoryDescription}" class="field"></textarea></p>
+							<p><label for="gapsInLiterature" class="left">Gaps In Literature:</label>
+								<textarea th:field="*{gapsInLiterature}" class="field"></textarea></p>
+							<p><label for="measures" class="left">Measures:</label>
+								<textarea th:field="*{measures}" class="field"></textarea></p>
+							<p><label for="findings" class="left">Findings:</label>
+								<textarea th:field="*{findings}" class="field"></textarea></p>
+							<p><label for="neuralAreasImplicated" class="left">Neural areas implicated:</label>
+								<textarea th:field="*{neuralAreasImplicated}" class="field"></textarea></p>
+							<p><label for="limitations" class="left">Limitations:</label>
+								<textarea th:field="*{limitations}" class="field"></textarea></p>
+							<p><label for="queries" class="left">Queries:</label>
+								<textarea th:field="*{queries}" class="field"></textarea></p>
+							<p><label for="thinkingStrategies" class="left">Thinking Strategies:</label>
+								<textarea th:field="*{thinkingStrategies}" class="field"></textarea></p>
+							<p><label for="ideaConnectome" class="left">Idea Connectome:</label>
+								<textarea th:field="*{ideaConnectome}" class="field"></textarea></p>
+							<p><label for="quizzlet" class="left">Quizzlet:</label>
+								<textarea th:field="*{quizzlet}" class="field"></textarea></p>
+							<p><label for="answers" class="left">Answers:</label>
+								<textarea th:field="*{answers}" class="field"></textarea></p>
 							<p><label for="file" class="left">Image:</label>
 								<input type="file" name="files" /></p>
-							<p th:each="author: ${authors}"><input type="checkbox" th:field="*{authorIds}" th:value="${author.id}" class="checkbox" size="1" value="" />&nbsp;<label th:for="${author.id}" th:text="${author.name}">Author Name</label></p>
+							<p><label for="authorIds" class="left">Authors:</label>
+								<select th:field="*{authorIds}" multiple="multiple" class="combo">
+									<option th:each="author : ${authors}" 
+										th:value="${author.id}" 
+										th:text="${author.name}">Author Name</option>
+								</select>
+							</p>							
 							<p><label for="authorNames" class="left">Add new authors</label>
 								<input type="text" th:field="*{authorNames}" /></p>
 							<p><input type="submit" name="submit" id="submit" class="button" value="Save" tabindex="6" /></p>

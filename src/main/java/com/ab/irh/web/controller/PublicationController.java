@@ -61,7 +61,7 @@ public class PublicationController {
 		authorRepository.save(publication.getAuthors());
 		publication = publicationRepository.save(publication);
 		model.addAttribute(publication);
-		return "result";
+		return "redirect:/publications";
 	}
 
 	@RequestMapping(value = "/publications", method = RequestMethod.GET)
