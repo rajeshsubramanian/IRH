@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,15 +27,15 @@ public class PublicationController {
 	@Autowired
 	private AuthorRepository authorRepository;
 
-	@RequestMapping(value = "/publication", method = RequestMethod.GET)
+	@RequestMapping(value = "/add_publication", method = RequestMethod.GET)
 	public String publicationForm(Model model) {
 
 		model.addAttribute("publicationForm", new PublicationForm());
 		model.addAttribute("authors", authorRepository.findAll());
-		return "publication";
+		return "add_publication";
 	}
 
-	@RequestMapping(value = "/publication", method = RequestMethod.POST)
+	@RequestMapping(value = "/add_publication", method = RequestMethod.POST)
 	public String addPublication(@ModelAttribute PublicationForm publicationForm, @RequestParam MultipartFile[] files,
 			Model model) {
 

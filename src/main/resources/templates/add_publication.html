@@ -106,7 +106,7 @@
 		
 			<!-- Navigation with grid style -->
 			<dl class="nav3-grid">
-				<dt><a href="/publication">Add publication</a></dt>
+				<dt><a href="/add_publication">Add publication</a></dt>
 				<dt><a href="/publications">List all publications</a></dt>
 			</dl>
 		</div>
@@ -120,8 +120,8 @@
 			<!-- Content unit - One column -->
 			<div class="column1-unit">
 				<div class="contactform">
-					<form action="#" th:action="@{/publication}" th:object="${publicationForm}" method="post" enctype="multipart/form-data">
-						<fieldset><legend>&nbsp;PUBLICATION DETAILS&nbsp;</legend>
+					<form action="#" th:action="@{/add_publication}" th:object="${publicationForm}" method="post" enctype="multipart/form-data">
+						<fieldset><legend>&nbsp;NEW PUBLICATION&nbsp;</legend>
 							<p><label for="title" class="left">Title:</label>
 								<input type="text" th:field="*{title}" class="field" /></p>
 							<p><label for="year" class="left">Year:</label>
