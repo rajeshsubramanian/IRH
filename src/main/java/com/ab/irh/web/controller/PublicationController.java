@@ -28,6 +28,11 @@ public class PublicationController {
 	@Autowired
 	private AuthorRepository authorRepository;
 
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String index() {
+		return "home";
+	}
+
 	@RequestMapping(value = "/add_publication", method = RequestMethod.GET)
 	public String publicationForm(Model model) {
 
