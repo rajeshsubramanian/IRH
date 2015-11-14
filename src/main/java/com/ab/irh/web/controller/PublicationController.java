@@ -28,7 +28,7 @@ public class PublicationController {
 	@Autowired
 	private AuthorRepository authorRepository;
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
 		return "home";
 	}
