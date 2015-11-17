@@ -16,12 +16,16 @@
 					<th class="top" scope="col">Title</th>
 					<th class="top" scope="col">Year</th>
 					<th class="top" scope="col">Authors</th>
+					<th class="top"></th>
 				</tr>
 				<tr th:each="publication: ${publications}">
 					<td th:text="${publication.title}">Title</td>
 					<td th:text="${publication.year}">Year</td>
 					<td>
-						<div th:each="author: ${publication.authors}" th:utext="${author.name}">Author</div>
+						<div th:each="author: ${publication.authors}" th:text="${author.name}">Author</div>
+					</td>
+					<td>
+						<img th:each="publicationImage: ${publication.publicationImages}" th:src="${'https://s3.amazonaws.com/ashrajbala/irh/' + publicationImage.thumbnailFileName}" />
 					</td>
 				</tr>
 			</table>

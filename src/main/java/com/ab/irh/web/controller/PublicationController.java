@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ab.irh.exception.ResourceNotFoundException;
 import com.ab.irh.model.Author;
 import com.ab.irh.model.Publication;
+import com.ab.irh.model.PublicationImage;
 import com.ab.irh.repository.AuthorRepository;
 import com.ab.irh.repository.PublicationRepository;
 import com.ab.irh.web.form.PublicationForm;
@@ -132,6 +133,9 @@ public class PublicationController {
 
 					originalImage.flush();
 					originalImage = null;
+
+					PublicationImage publicationImage = new PublicationImage(thumbnailFileName, fileName);
+					publication.addPublicationImage(publicationImage);
 
 				} catch (IllegalStateException | IOException e) {
 					LOG.error("Exception while trying to upload files");

@@ -1,6 +1,7 @@
 package com.ab.irh.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.ab.irh.web.form.PublicationForm;
@@ -71,6 +73,9 @@ public class Publication {
 	@JoinTable(name = "publication_author", joinColumns = {
 			@JoinColumn(name = "publication_id") }, inverseJoinColumns = { @JoinColumn(name = "author_id") })
 	private List<Author> authors;
+
+	@OneToMany(mappedBy = "publication", cascade = CascadeType.ALL)
+	private List<PublicationImage> publicationImages;
 
 	public Publication() {
 	}
@@ -227,5 +232,21 @@ public class Publication {
 			authors = new ArrayList<>();
 		}
 		authors.add(author);
+	}
+	
+	public List<PublicationImage> getPublicationImages() {
+		return publicationImages;
+	}
+	
+	public void setPublicationImages(List<PublicationImage> publicationImages) {
+		this.publicationImages = publicationImages;
+	}
+
+	public void addPublicationImage(PublicationImage publicationImage) {
+		if (publicationImages == null) {
+			publicationImages = new ArrayList<>();
+		}
+		publicationImage.setPublication(this);
+		publicationImages.add(publicationImage);
 	}
 }
